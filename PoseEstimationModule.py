@@ -10,7 +10,7 @@ import cv2
 import mediapipe as mp
 import time
 import math
-
+##
 
 class poseEstimation():
 
@@ -52,7 +52,8 @@ class poseEstimation():
         self.processed = self.pose.process(videoRGB)
         self.landmarks = self.processed.pose_landmarks
 
-        #If pose joins are present then we have to draw the landmarks of the joins
+        #If pose joins are present then we have to draw the landmarks of 
+        #the joins
         if self.landmarks:
             if draw:
                 self.mpDraw.draw_landmarks(
@@ -88,7 +89,8 @@ class poseEstimation():
         #Also needs to convert to degree from radian
         angle = math.degrees(math.atan2(y3-y2,x3-x2)- math.atan2(y1-y2,x1-x2))
         
-        #Incase angle goes to negative then we must do some adjustment by adding 360 to it
+        #Incase angle goes to negative then we must do some adjustment by 
+        #adding 360 to it
         if angle <0:
             angle += 360   
         
@@ -113,7 +115,8 @@ def main():
 
     #Looping through each frame of the video
     while True:
-        #Checking whether the frame has valid image and getting the current frame
+        #Checking whether the frame has valid image and getting 
+        #the current frame
         sucess, frame = video.read()
         
         #Resizing the video
@@ -158,10 +161,12 @@ def main():
         #Breaking the loop to close the window by pressing 'q' key
         #Masking the 28 bit of key pressed with the unique code
         if cv2.waitKey(10) & 0xFF == ord('q'):
+            cv2.destroyAllWindows()
             break
 
 
-#When importing this file as Module this will be ignored else main() will be called
+#When importing this file as Module this will be ignored else main() will be 
+#called
 if __name__ == "__main__":
     main()
 ##
