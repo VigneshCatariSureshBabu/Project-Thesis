@@ -91,7 +91,7 @@ def main(video, pEstimate, finalCheck, rotate = False):
             ##
             
             # Rotating the video if required
-            if rotate == True:
+            if rotate:
                 frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
             ##
     

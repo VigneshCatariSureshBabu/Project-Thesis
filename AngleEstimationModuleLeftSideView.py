@@ -9,7 +9,7 @@ import cv2
 import PoseEstimationModule as pm
 import numpy as np
 
-def main(video, pEstimate, finalCheck):
+def main(video, pEstimate, finalCheck, rotate = False):
     
     # Mainly used to check whether the landing and the bending of the player is
     # proper of not    
@@ -92,7 +92,8 @@ def main(video, pEstimate, finalCheck):
             ##
             
             # Rotating the video if required
-            frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
+            if rotate:
+                frame = cv2.rotate(frame, cv2.ROTATE_90_COUNTERCLOCKWISE)
             ##
             
             # Detecting the coordinates of each frame and storing back as frame
@@ -184,6 +185,6 @@ if __name__ == "__main__":
     ##
     
     # Calling the main function
-    main(video, pEstimate, finalCheck)
+    main(video, pEstimate, finalCheck, True)
     ##
 ##
